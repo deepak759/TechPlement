@@ -12,11 +12,11 @@ export default function App() {
     <BrowserRouter>
       <Routes>
        
+            <Route path="/" element={<SignUp />} />
         {currentUser ? (
           <Route path="/" element={<Navigate to="/home" />} />
         ) : (
           <>
-            <Route path="/" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
           </>
