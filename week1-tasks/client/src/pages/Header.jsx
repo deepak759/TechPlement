@@ -38,12 +38,12 @@ export default function Header() {
               <span className="text-slate-300 ">Tasks</span>
             </h1>
 
-            <p className="text-white px-3 font-semibold italic text-center">
+            <p className="hidden sm:block  text-white px-3 font-semibold italic text-center">
               Every small todo today is a step closer to a successful tomorrow !
             </p>
             <button
               onClick={handleLogOut}
-              className="bg-gray-300 text-red-600 hover:bg-gray-400  font-bold py-2 px-4 rounded-md"
+              className="bg-gray-300 text-red-600 hover:bg-gray-400  font-bold py-2 px-2 md:px-4 rounded-md"
             >
               Logout
             </button>

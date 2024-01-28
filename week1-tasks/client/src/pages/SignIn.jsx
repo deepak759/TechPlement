@@ -11,8 +11,8 @@ import Header from "./Header";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
- 
-  const {loading,error}=useSelector((state)=>state.user)
+ const [error,setError]=useState(false)
+  const {loading}=useSelector((state)=>state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -35,12 +35,16 @@ export default function SignIn() {
       const data = await res.json();
     
       if (data.success === false) {
+        setError(data.message)
       dispatch(signInFail(data.message))
         return;
       }
       dispatch(signInSuccess(data))
+   
+
       navigate("/");
     } catch (error) {
+      setError(error.message)
     dispatch(signInFail(error.message))
     }
   };
