@@ -50,17 +50,17 @@ export default function Header() {
           </div>
         </header>
       ) : (
-        <div>
-          <header className="bg-[#2d2f4a] h-18  flex justify-center  items-center  p-3 shadow-md fixed w-full   py-5  z-50">
-            <p className="text-white font-semibold italic px-10  text-center">
+        <div >
+          <div className="bg-[#2d2f4a]   flex justify-center  items-center  p-3 shadow-md fixed w-full   py-5  z-50">
+            <p className="text-white font-semibold italic px-8 text-center">
               Every day is a chance to take one step closer to your dreams.
               Start with a todo list and let success follow.
             </p>
-          </header>
+          </div>
           <div className="flex items-center">
             <img
               src={logo}
-              className="w-48 rounded-full mt-24 mx-auto"
+              className="w-48 rounded-full mt-32  md:mt-28 mx-auto"
               alt="Logo"
             />
           </div>
