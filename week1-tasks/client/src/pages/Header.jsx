@@ -16,7 +16,7 @@ export default function Header() {
       dispatch(logOutUserStart());
       const res = await fetch(`/api/user/logout`);
       const data = await res.json();
-      console.log(data);
+
       if (data.success === false) {
         dispatch(logOutUserFail(data.message));
         return;

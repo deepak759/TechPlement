@@ -33,7 +33,7 @@ export default function SignIn() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+    
       if (data.success === false) {
       dispatch(signInFail(data.message))
         return;
@@ -79,7 +79,7 @@ export default function SignIn() {
           Sign Up
         </Link>
       </p>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <p className="text-white-500">{error}</p>}
     </div>
     </div>
   );

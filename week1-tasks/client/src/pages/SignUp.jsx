@@ -15,7 +15,7 @@ export default function SignIn() {
       ...formData,
       [e.target.id]: e.target.value,
     });
-    console.log(formData);
+    
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ export default function SignIn() {
       });
       const data =await res.json();
       if(data.success===false){
-        console.log(data.message)
+        
         setError(data.message)
         setLoading(false)
         return;
@@ -40,7 +40,7 @@ export default function SignIn() {
       navigate('/signin')
     } catch (error) {
       setLoading(false)
-      console.log(error)
+      
       setError(error.message)
     }
    
@@ -92,9 +92,9 @@ export default function SignIn() {
     
 
       {error && (
-        <p className="text-red-500">
+        <p className="text-white-500">
    
-         {error}
+         Some Error Occured Plaese Try Again
         
       </p>
       )}

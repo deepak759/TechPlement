@@ -1,19 +1,30 @@
-/* eslint-disable no-unused-vars */
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 
 export default function App() {
+  const { currentUser } = useSelector((state) => state.user);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignUp />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/home" element={<Home />} />
+       
+        {currentUser ? (
+          <Route path="/" element={<Navigate to="/home" />} />
+        ) : (
+          <>
+            <Route path="/" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+          </>
+        )}
+        
+        {currentUser && (
+          <Route path="/home" element={<Home />} />
+        )}
       </Routes>
     </BrowserRouter>
   );

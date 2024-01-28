@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 export const signup = async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashedPassword = bcrypt.hashSync(password, 10);
-  console.log(hashedPassword);
+  
   const user = new User({ username, email, password: hashedPassword });
   try {
     await user.save();
@@ -32,7 +32,7 @@ export const signin = async (req, res, next) => {
     if (!validPassword) return next(errorHandler(401, "wrong credentials"));
 
     const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
-    console.log(validUser);
+   
     const { password: pass, ...rest } = validUser._doc;
     res.cookie("acces_token", token, { httpOnly: true }).status(200).json(rest);
   } catch (error) {
@@ -80,7 +80,7 @@ export const deleteTodo = async (req, res, next) => {
       return next(errorHandler(404, "user Not Found"));
     }
     const tasks = user.tasks.filter((task) => task.id !== todoId);
-    console.log(tasks);
+   
     user.tasks = tasks;
     await user.save();
     const{password:pass,...rest}=user._doc

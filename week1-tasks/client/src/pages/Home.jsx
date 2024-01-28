@@ -13,8 +13,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newTodo = { id: Date.now(), text: todo, completed: false };
-    setTodoitem([...todoItems, newTodo]);
+    
     dispatch(updateUserStart());
     const res = await fetch("/api/user/createTodo", {
       method: "POST",
@@ -25,6 +24,8 @@ export default function Home() {
     });
     setTodo("");
     const data = await res.json();
+    console.log(data)
+    setTodoitem(data.tasks)
     dispatch(updateUserSuccess(data));
   };
 
@@ -46,17 +47,10 @@ export default function Home() {
   };
 
   const handleUpdate = async (e) => {
-    console.log(todoItems)
-    const updatedTasks = todoItems.map((task) => {
-      if (task._id === e) {
-        // Create a new object for the updated task without modifying the original task
-        return { ...task, completed: !task.completed };
-      }
-      return task;
-    });
+  
   
 
-    setTodoitem(updatedTasks);
+
 
     dispatch(updateUserStart());
 
@@ -70,7 +64,7 @@ export default function Home() {
 
     const data = await res.json();
     console.log(data);
-
+setTodoitem(data.tasks)
     dispatch(updateUserSuccess(data));
   };
 
