@@ -1,4 +1,3 @@
-
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import SignIn from "./pages/SignIn";
@@ -11,20 +10,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-       
-            <Route path="/" element={<SignUp />} />
-        {currentUser ? (
-          <Route path="/" element={<Navigate to="/home" />} />
-        ) : (
-          <>
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-          </>
-        )}
-        
-        {currentUser && (
-          <Route path="/home" element={<Home />} />
-        )}
+        <Route path="/" element={currentUser ? <Home /> : <SignUp />} />
+
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
