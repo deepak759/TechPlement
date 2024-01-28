@@ -61,7 +61,7 @@ export default function SignIn() {
         <input
           type="password"
           id="password"
-          className="border p-3 rounded-lg"
+          className="border p-3 text-black rounded-lg"
           placeholder="password..."
           onChange={handleChange}
         />
