@@ -48,9 +48,9 @@ export default function SignIn() {
   return (
     <div>
     <Header/>
-    <div className="  max-w-lg mx-auto text-white">
+    <div className="  max-w-lg px-3 mx-auto text-white">
       <h1 className="text-center text-3xl font-semibold my-3">Sign In </h1>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form onSubmit={handleSubmit} className="flex  flex-col gap-4">
         <input
           type="email"
           id="email"

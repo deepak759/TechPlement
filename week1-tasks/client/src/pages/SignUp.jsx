@@ -50,7 +50,7 @@ export default function SignIn() {
   return (
     <>
     <Header/>
-    <div className="  text-white max-w-lg mx-auto">
+    <div className="  text-white px-3 max-w-lg mx-auto">
       <h1 className="text-center text-3xl font-semibold my-3">Sign Up </h1>
       <form onSubmit={handleSubmit} className="flex text-black flex-col gap-4">
         <input

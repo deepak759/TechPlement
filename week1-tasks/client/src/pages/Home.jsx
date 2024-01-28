@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserStart, updateUserSuccess } from "../redux/user/userSlice";
 import Header from "./Header";
-
+import { MdDeleteForever } from "react-icons/md";
 export default function Home() {
   const { currentUser } = useSelector((state) => state.user);
   const [todo, setTodo] = useState("");
@@ -13,7 +13,7 @@ export default function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     dispatch(updateUserStart());
     const res = await fetch("/api/user/createTodo", {
       method: "POST",
@@ -24,8 +24,8 @@ export default function Home() {
     });
     setTodo("");
     const data = await res.json();
-    console.log(data)
-    setTodoitem(data.tasks)
+    console.log(data);
+    setTodoitem(data.tasks);
     dispatch(updateUserSuccess(data));
   };
 
@@ -47,11 +47,6 @@ export default function Home() {
   };
 
   const handleUpdate = async (e) => {
-  
-  
-
-
-
     dispatch(updateUserStart());
 
     const res = await fetch("/api/user/updateTodo", {
@@ -64,7 +59,7 @@ export default function Home() {
 
     const data = await res.json();
     console.log(data);
-setTodoitem(data.tasks)
+    setTodoitem(data.tasks);
     dispatch(updateUserSuccess(data));
   };
 
@@ -74,9 +69,9 @@ setTodoitem(data.tasks)
 
       <div className=" mt-48  flex justify-center  items-center flex-col gap-8">
         <div className="flex justify-center items-center   gap-6">
-          <form onSubmit={handleSubmit} className=" ">
+          <form onSubmit={handleSubmit} >
             <input
-              className=" h-12 w-72    px-3 py-3 bg-[#E8ECF4] backdrop-blur-lg"
+              className=" h-12 sm:w-72    px-3 py-3 bg-[#E8ECF4] backdrop-blur-lg"
               value={todo}
               type="text"
               id="text"
@@ -98,34 +93,39 @@ setTodoitem(data.tasks)
           <h1 className="text-slate-200 uppercase font-semibold text-2xl">
             Task List
           </h1>
-          {todoItems.length?  <div className="w-1/2 bg-[#25273c] backdrop-blur-lg px-3 pt-5 pb-10  rounded-md">
-            {todoItems.map((todo) => (
-              <div
-                key={todo._id}
-                className="flex justify-between border-b bg-[#25273c] items-center py-3"
-              >
-                <li className="list-none w-2/3 text-left break-normal flex items-center">
-                  <input
-                    className="cursor-pointer  rounded-full border-2 border-gray-400  w-6 h-6 checked:bg-blue-600 checked:border-transparent align-middle mr-2"
-                    type="checkbox"
-                    checked={todo.completed}
-                    onChange={() => handleUpdate(todo._id)}
-                  />
-                  {todo.text}
-                </li>
+          {todoItems.length ? (
+            <div className="w-[75%] md:w-1/2 bg-[#25273c] backdrop-blur-lg px-3 pt-5 pb-10  rounded-md">
+              {todoItems.map((todo) => (
+                <div
+                  key={todo._id}
+                  className="flex justify-between border-b bg-[#25273c] items-center py-3"
+                >
+                  <li className="list-none w-[80%]  md:w-[85%] text-left break-normal flex items-center">
+                    <input
+                      className="cursor-pointer  rounded-full border-2 border-gray-400  w-6 h-6 checked:bg-blue-600 checked:border-transparent align-middle mr-2"
+                      type="checkbox"
+                      checked={todo.completed}
+                      onChange={() => handleUpdate(todo._id)}
+                    />
+                  <p style={{ maxWidth: "calc(90% - 20px)", overflowWrap: "break-word" }}>
+    {todo.text}
+  </p> 
+                  </li>
 
-                <div className="flex gap-3">
-                  <button
-                    className="bg-gray-300 text-red-600 px-2  mr-3 py-2  rounded-md"
-                    onClick={() => handleDelete(todo._id)}
-                  >
-                    Delete
-                  </button>
+                  <div className="flex gap-3">
+                    <button
+                      className=" text-red-600 px-2 text-2xl  "
+                      onClick={() => handleDelete(todo._id)}
+                    >
+                      <MdDeleteForever />
+                    </button>
+                  </div>
                 </div>
-            
-              </div>
-            ))}
-          </div>:<p className="text-white">You Have No Todos Left</p>}
+              ))}
+            </div>
+          ) : (
+            <p className="text-white">You Have No Todos Left</p>
+          )}
         </div>
       </div>
     </div>
