@@ -38,7 +38,7 @@ export default function Header() {
               <span className="text-slate-300 ">Tasks</span>
             </h1>
 
-            <p className="text-white font-semibold italic text-center">
+            <p className="text-white px-3 font-semibold italic text-center">
               Every small todo today is a step closer to a successful tomorrow !
             </p>
             <button
@@ -52,7 +52,7 @@ export default function Header() {
       ) : (
         <div>
           <header className="bg-[#2d2f4a] h-18  flex justify-center  items-center  p-3 shadow-md fixed w-full   py-5  z-50">
-            <p className="text-white font-semibold italic px-10 text-center">
+            <p className="text-white font-semibold italic px-10  text-center">
               Every day is a chance to take one step closer to your dreams.
               Start with a todo list and let success follow.
             </p>
@@ -60,7 +60,7 @@ export default function Header() {
           <div className="flex items-center">
             <img
               src={logo}
-              className="w-48 rounded-full mt-20 mx-auto"
+              className="w-48 rounded-full mt-24 mx-auto"
               alt="Logo"
             />
           </div>
