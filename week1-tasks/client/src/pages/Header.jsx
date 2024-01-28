@@ -60,7 +60,7 @@ export default function Header() {
           <div className="flex items-center">
             <img
               src={logo}
-              className="w-48 rounded-full mt-[120px]  md:mt-28 mx-auto"
+              className="w-40 md:w-48 rounded-full  mt-28 mx-auto"
               alt="Logo"
             />
           </div>
