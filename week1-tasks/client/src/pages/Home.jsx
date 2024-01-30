@@ -7,9 +7,9 @@ export default function Home() {
   const { currentUser } = useSelector((state) => state.user);
   const [todo, setTodo] = useState("");
   const [todoItems, setTodoitem] = useState(currentUser.tasks);
-  console.log(todoItems);
+
   const dispatch = useDispatch();
-  console.log(todo);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ export default function Home() {
     });
     setTodo("");
     const data = await res.json();
-    console.log(data);
+   
     setTodoitem(data.tasks);
     dispatch(updateUserSuccess(data));
   };
@@ -43,7 +43,7 @@ export default function Home() {
     });
     const data = await res.json();
     dispatch(updateUserSuccess(data));
-    console.log(data);
+ 
   };
 
   const handleUpdate = async (e) => {
@@ -58,7 +58,7 @@ export default function Home() {
     });
 
     const data = await res.json();
-    console.log(data);
+ 
     setTodoitem(data.tasks);
     dispatch(updateUserSuccess(data));
   };
