@@ -54,7 +54,7 @@ export default function Header() {
           <div className="bg-[#2d2f4a]   flex justify-center  items-center  p-3 shadow-md fixed w-full   py-5  z-50">
             <p className="text-white font-semibold italic px-8 text-center">
               Every day is a chance to take one step closer to your dreams.
-              Start with a todo list and let success follow.
+              Start with a todo list and let success follow!
             </p>
           </div>
           <div className="flex items-center">
